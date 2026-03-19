@@ -30,35 +30,46 @@
                     app:contentScrim="@color/transparent"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_100"
-                        android:background="@color/black" />
+                        android:layout_height="wrap_content">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/main_file_type_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true" />
+                    </RelativeLayout>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
                 <!--顶在上面的-->
                 <RelativeLayout
-                    android:id="@+id/main_file_path_guide_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_file_path_guide_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="@dimen/dp_10"
+                        android:layout_marginVertical="@dimen/dp_5" />
                 </RelativeLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
             <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/main_smart_refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <com.scwang.smart.refresh.header.MaterialHeader
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/main_file_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/dp_10" />
 
                 <com.scwang.smart.refresh.header.FalsifyFooter
                     android:layout_width="match_parent"

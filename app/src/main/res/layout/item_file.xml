@@ -9,8 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_60"
-        android:layout_marginHorizontal="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginVertical="@dimen/dp_5"
         android:background="?selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -19,10 +18,13 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_file_type_image"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_35"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_10" />
+            android:layout_marginStart="@dimen/dp_5"
+            android:scaleType="centerCrop" />
+
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_file_name_tv"
@@ -34,7 +36,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             tools:text="MyFolder" />
 
         <androidx.appcompat.widget.AppCompatImageView

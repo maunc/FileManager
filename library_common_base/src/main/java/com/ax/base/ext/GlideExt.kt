@@ -9,6 +9,10 @@ import androidx.annotation.RawRes
 import androidx.fragment.app.Fragment
 import com.ax.base.BaseApp
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import java.io.File
 
 fun ImageView.loadImage(uri: Uri) =
@@ -61,3 +65,14 @@ fun ImageView.loadImageCircleCrop(@RawRes @DrawableRes resId: Int) =
 
 fun ImageView.loadImageCircleCrop(string: String) =
     Glide.with(BaseApp.app).load(string).circleCrop().into(this)
+
+fun ImageView.loadImageRounded(source: Any?, cornerDp: Int = 8, ) {
+    val radiusPx = cornerDp.dp2px()
+    val options = RequestOptions.bitmapTransform(
+        MultiTransformation(
+            CenterCrop(),
+            RoundedCorners(radiusPx),
+        )
+    )
+    Glide.with(BaseApp.app).load(source).apply(options).into(this)
+}

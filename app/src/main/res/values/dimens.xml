@@ -2,6 +2,7 @@
 <resources>
 
     <!--通用sp-->
+    <dimen name="sp_12">12sp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_26">26sp</dimen>
     <!--通用dp-->

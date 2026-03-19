@@ -69,7 +69,7 @@ fun File.createFileDir(dirName: String): Boolean {
 fun Context.obtainSDCardRootPath(): String {
     if (!isSDCardAvailable()) return ""
     val sdCardRoot: File? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-        getExternalFilesDir(null)
+        getExternalFilesDir(null)?.parentFile?.parentFile?.parentFile?.parentFile
     } else {
         Environment.getExternalStorageDirectory()
     }
