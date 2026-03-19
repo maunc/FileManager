@@ -30,6 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -37,6 +41,7 @@ android {
 
 dependencies {
     implementation(project(":library_common_base"))
+    implementation(project(":library_ffmpeg_kit"))
     implementation(libs.ext.mmkv) {
         exclude("org.jetbrains.kotlin", "kotlin-stdlib")
     }

@@ -2,13 +2,13 @@ package com.ax.base.ui
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.ax.base.ext.finishCurrentActivity
 import com.ax.base.ext.getVmClazz
 import com.ax.base.ext.inflateBindingWithGeneric
+import com.gyf.immersionbar.ImmersionBar
 
 abstract class BaseActivity<VM : BaseViewModel<*>, DB : ViewDataBinding> : AppCompatActivity() {
 
@@ -37,19 +37,16 @@ abstract class BaseActivity<VM : BaseViewModel<*>, DB : ViewDataBinding> : AppCo
     /**
      * 创建LiveData数据观察者
      */
-    abstract fun createObserver()
+    open fun createObserver() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true)
+            .fitsSystemWindows(true).init()
         mDatabind = inflateBindingWithGeneric(layoutInflater)
         mDatabind.lifecycleOwner = this
         setContentView(mDatabind.root)
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }*/
         mViewModel = createViewModel()
         lifecycle.addObserver(mViewModel)
         initView(savedInstanceState)

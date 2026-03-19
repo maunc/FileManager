@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ax.base"
+    namespace = "com.ax.ffmpeg"
     compileSdk = 34
 
     defaultConfig {
@@ -27,24 +27,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    buildFeatures {
-        //noinspection DataBindingWithoutKapt
-        dataBinding = true
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    api(libs.bundles.android)
-    api(libs.bundles.lifecycle)
-    api(libs.bundles.glide)
-    api(libs.bundles.baseAdapter)
-    api(libs.bundles.refresh.layout)
-    api(libs.ext.gson)
-    api(libs.ext.auto.size)
-    api(libs.ext.immersionbar)
+    implementation(libs.androidx.core.ktx)
+    api(libs.ext.ffmpeg.kit)
 }

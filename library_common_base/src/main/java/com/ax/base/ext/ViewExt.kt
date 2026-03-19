@@ -344,10 +344,10 @@ fun RecyclerView.addItemTouchHelper(
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder,
         ): Boolean {
-            val fromPosition = viewHolder.adapterPosition
-            val toPosition = target.adapterPosition
+            val fromPosition = viewHolder.bindingAdapterPosition
+            val toPosition = target.bindingAdapterPosition
             val adapter = recyclerView.adapter ?: return false
-            if (fromPosition < 0 || toPosition < 0 ||
+            if (fromPosition == RecyclerView.NO_POSITION || toPosition == RecyclerView.NO_POSITION ||
                 fromPosition >= adapter.itemCount ||
                 toPosition >= adapter.itemCount
             ) return false

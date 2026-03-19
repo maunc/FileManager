@@ -77,9 +77,8 @@ fun AppCompatActivity.startAppSystemSettingPage() = startActivity(
 /**
  * 检查并申请文件读写权限
  */
-private const val REQUEST_CODE_MANAGE_FILE = 1001
 @SuppressLint("ObsoleteSdkInt")
-fun AppCompatActivity.checkFilePermission(): Boolean {
+fun AppCompatActivity.checkFilePermission(requestCode: Int = 1001): Boolean {
     // Android 10+ 且需要全文件访问：申请MANAGE_EXTERNAL_STORAGE
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         if (hasManageFilePermission()) {
@@ -88,7 +87,7 @@ fun AppCompatActivity.checkFilePermission(): Boolean {
         // 跳转系统设置申请全文件访问
         startActivityIfNeeded(Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION).apply {
             data = Uri.parse("package:${this@checkFilePermission.packageName}")
-        }, REQUEST_CODE_MANAGE_FILE)
+        }, requestCode)
     }
     //Android 13+：申请细分的媒体权限
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

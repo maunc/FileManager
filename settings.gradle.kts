@@ -38,3 +38,4 @@ dependencyResolutionManagement {
 rootProject.name = "FileManager"
 include(":app")
 include(":library_common_base")
+include(":library_ffmpeg_kit")

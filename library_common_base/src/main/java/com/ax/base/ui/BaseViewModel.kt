@@ -37,7 +37,9 @@ abstract class BaseViewModel<M : BaseModel?> : ViewModel(), BaseLifecycle {
         val actualTypeArguments = parameterizedType.actualTypeArguments
         val mClass = actualTypeArguments[0] as Class<M>
         try {
-            model = mClass.newInstance()
+            val constructor = mClass.getDeclaredConstructor()
+            constructor.isAccessible = true
+            model = constructor.newInstance()
         } catch (e: IllegalAccessException) {
             Log.e("BaseViewModel", e.toString())
         } catch (e: InstantiationException) {
