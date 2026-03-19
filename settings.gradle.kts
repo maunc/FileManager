@@ -9,6 +9,14 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://maven.aliyun.com/repository/public/") }
+        maven { // ffmpeg使用
+            setUrl("https://github.com/arthenica/ffmpeg-kit/releases")
+            content {
+                includeGroup("com.arthenica")
+            }
+        }
     }
 }
 dependencyResolutionManagement {
@@ -16,9 +24,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://maven.aliyun.com/repository/public/") }
+        maven { // ffmpeg使用
+            setUrl("https://github.com/arthenica/ffmpeg-kit/releases")
+            content {
+                includeGroup("com.arthenica")
+            }
+        }
     }
 }
 
 rootProject.name = "FileManager"
 include(":app")
- 
+include(":library_common_base")

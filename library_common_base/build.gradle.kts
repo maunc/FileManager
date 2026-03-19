@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "com.ax.filemanager"
-    compileSdk = 35
+    namespace = "com.ax.base"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ax.filemanager"
         minSdk = 31
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -30,18 +27,22 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    implementation(project(":library_common_base"))
-    implementation(libs.ext.mmkv) {
-        exclude("org.jetbrains.kotlin", "kotlin-stdlib")
-    }
+    api(libs.bundles.android)
+    api(libs.bundles.lifecycle)
+    api(libs.bundles.glide)
+    api(libs.bundles.baseAdapter)
+    api(libs.ext.gson)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
